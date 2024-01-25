@@ -160,6 +160,43 @@
 
         <gradio-app src="https://haoheliu-audioldm-48k-text-to-hifiaudio-generation.hf.space"></gradio-app> -->
 
-    </div>   
+    </div>
+
+    <!--
+    Fix broken example images.
+    Only works with embedded content and not iframes.
+    -->
+    <script>
+        // Function to remove the element based on ID and class
+        function removeElementByIdAndClass(id, className) {
+            var selector = `#${id}.${className}`;
+            var element = document.querySelector(selector);
+            
+            if (element) {
+                element.remove();
+                // Optionally, disconnect the observer after removing the element
+                observer.disconnect();
+            }
+        }
+
+        // Create a MutationObserver to watch for changes in the DOM
+        var observer = new MutationObserver(function (mutationsList, observer) {
+            for (var mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    // Check if the element with ID "component-13" and class "block.svelte-90oupt.hide-container" is added
+                    removeElementByIdAndClass("component-13", "block.svelte-90oupt.hide-container");
+                }
+            }
+        });
+
+        // Start observing the target node for configured mutations
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Stop checking after some time
+        setTimeout(() => {
+            observer.disconnect()
+        }, 10000);
+
+    </script>
 </body>
 </html>
