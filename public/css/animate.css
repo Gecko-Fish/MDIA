@@ -1,0 +1,41 @@
+.slide-in-up-container>* {
+    opacity: 0;
+    transform: translateY(100px); /* Initially off-screen to the right */
+    animation-fill-mode: forwards; /* Keep the final state after animation */
+}
+
+.slide-in-down-container>* {
+    opacity: 0;
+    transform: translateY(-100px); /* Initially off-screen to the right */
+    animation-fill-mode: forwards; /* Keep the final state after animation */
+}
+
+.slide-in-right-container>* {
+    opacity: 0;
+    transform: translateX(-100px); /* Initially off-screen to the right */
+    animation-fill-mode: forwards; /* Keep the final state after animation */
+}
+
+.slide-delay-1 {
+    animation: slide-in 1s ease forwards 0.5s; /* Delay the animation by 0.5 seconds */
+}
+
+.slide-delay-2 {
+    animation: slide-in 1s ease forwards 1s; /* Delay the animation by 1 second */
+}
+
+.slide-delay-3 {
+    animation: slide-in 1s ease forwards 1.5s; /* Delay the animation by 1.5 seconds */
+}
+
+.slide-delay-4 {
+    animation: slide-in 1s ease forwards 2s; /* Delay the animation by 2 seconds */
+}
+
+@keyframes slide-in {
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Slide in to the original position */
+        transform: translateY(0); /* Slide in to the original position */
+    }
+}
