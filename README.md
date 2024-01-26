@@ -15,6 +15,8 @@
 
 - https://huggingface.co/spaces/prodia/fast-stable-diffusion
 
+- https://huggingface.co/spaces/stabilityai/stable-diffusion
+
 - https://huggingface.co/spaces/diffusers/stable-diffusion-xl-inpainting
 
 - https://huggingface.co/spaces/multimodalart/stable-video-diffusion
