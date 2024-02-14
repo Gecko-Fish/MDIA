@@ -228,3 +228,27 @@ nav ul li{
         margin-top: 5px;
     }
 }
+
+#tutorial-container{
+    width: 500000px;
+    position: absolute;
+    transition: left 1s ease;
+}
+
+.tutorial-block{
+    padding: 50px;
+    width: 1000px;
+}
+
+button{
+    background-color:black;
+    border-radius: 0;
+    margin-right: 20px;
+    color: white;
+}
+
+#tutorial-selection{
+    border-radius: 10px;
+    background-color: rgb(49, 60, 85);
+    max-width: fit-content;
+}

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Video AI Webportal</title>
     <!-- Image is squashed -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/animate.css">
-    <script
-        type="module"
-        src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"
-    ></script>
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"></script>
 </head>
+
 <body>
     <h1>
         Video AI Webportal
@@ -22,82 +21,103 @@
     </p>
     <br><br>
 
-    <div class="tutorial-block">
-        <h3>Story Generation</h3>
-        <!-- <video controls="" width="250">
+    <H1>Intro Video for Content Creators</H1>
+    <video controls>
+        <source src="public/media/video/Intro_Outro Video Demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <br>
+    <br>
+    <br>
+
+    <div id="tutorial-selection" class="flex-row">
+        <button class="button" onclick="switchStep(1)">Step 1</button>
+        <button class="button" onclick="switchStep(2)">Step 2</button>
+        <button class="button" onclick="switchStep(3)">Step 3</button>
+        <button class="button" onclick="switchStep(4)">Step 4</button>
+        <button class="button" onclick="switchStep(5)">Step 5</button>
+        <button class="button" onclick="switchStep(6)">Step 6</button>
+        <button class="button" onclick="switchStep(7)">Step 7</button>
+    </div>
+
+    <div id="tutorial-container" class="flex-row">
+        <div class="tutorial-block">
+            <h3>Story Generation</h3>
+            <!-- <video controls="" width="250">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4">
         </video> -->
-        <p>Use this chat interface to help you plan your scenes and story</p>
-        
-        <!-- <iframe
+            <p>Use this chat interface to help you plan your scenes and story</p>
+
+            <!-- <iframe
             src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"
             frameborder="0"
             width="850"
             height="450"
         ></iframe> -->
 
-        <!-- <script
+            <!-- <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/4.15.0/gradio.js"
         ></script> -->
 
-        <gradio-app id="story-gen" src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"></gradio-app>
+            <gradio-app id="story-gen" src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"></gradio-app>
 
 
-    </div>
-    <div class="tutorial-block">
-        <h3>Prompt Engineering</h3>
-        <!-- <video controls="" width="250">
+        </div>
+        <div class="tutorial-block">
+            <h3>Prompt Engineering</h3>
+            <!-- <video controls="" width="250">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4">
         </video> -->
-        <p>Use this chat interface to help you prompt the image generation AI</p>
-        
-        <!-- <iframe
+            <p>Use this chat interface to help you prompt the image generation AI</p>
+
+            <!-- <iframe
             src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"
             frameborder="0"
             width="850"
             height="450"
         ></iframe> -->
 
-        <!-- <script
+            <!-- <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/4.15.0/gradio.js"
         ></script> -->
 
-        <gradio-app id= "prompt-eng" src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"></gradio-app>
+            <gradio-app id="prompt-eng" src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"></gradio-app>
 
-    </div>
+        </div>
 
-    <div class="tutorial-block">
-        <h3>Image Generation</h3>
-        <!-- <video controls="" width="250">
+        <div class="tutorial-block">
+            <h3>Image Generation</h3>
+            <!-- <video controls="" width="250">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4">
         </video> -->
-        <p>Use this tool to generate images based on your prompt and/or images</p>
+            <p>Use this tool to generate images based on your prompt and/or images</p>
 
-        <!-- <iframe
+            <!-- <iframe
             src="https://prodia-fast-stable-diffusion.hf.space"
             frameborder="0"
             width="850"
             height="450"
         ></iframe> -->
 
-        <!-- <script
+            <!-- <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"
         ></script> -->
 
-        <gradio-app id="image-gen" src="https://prodia-fast-stable-diffusion.hf.space"></gradio-app>
+            <gradio-app id="image-gen" src="https://prodia-fast-stable-diffusion.hf.space"></gradio-app>
 
 
-        <!-- <script
+            <!-- <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/3.20.0/gradio.js"
         ></script>
 
         <gradio-app src="https://stabilityai-stable-diffusion.hf.space"></gradio-app> -->
 
-        <!-- <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container"></div>
+            <!-- <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container"></div>
             <iframe
                 src="https://stabilityai-stable-diffusion.hf.space"
                 frameborder="0"
@@ -105,90 +125,82 @@
                 height="1000px"
             ></iframe>
         </div> -->
-    </div>
-
-    <div class="tutorial-block">
-        <h3>Image Inpainting</h3>
-        <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-        <p>Use this tool to edit images based on your prompt</p>
-
-        <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
-            <iframe
-                src="https://diffusers-stable-diffusion-xl-inpainting.hf.space"
-                frameborder="0"
-                width="100%"
-                height="1000px"
-            ></iframe>
         </div>
 
-        <!-- <script
+        <div class="tutorial-block">
+            <h3>Image Inpainting</h3>
+            <!-- <video controls="" width="250">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
+        </video> -->
+            <p>Use this tool to edit images based on your prompt</p>
+
+            <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
+                <iframe src="https://diffusers-stable-diffusion-xl-inpainting.hf.space" frameborder="0" width="100%"
+                    height="1000px"></iframe>
+            </div>
+
+            <!-- <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/3.41.2/gradio.js"
         ></script>
     
         <gradio-app id="inpaint" src="https://diffusers-stable-diffusion-xl-inpainting.hf.space"></gradio-app> -->
-    
-    </div>
 
-    <div class="tutorial-block">
-        <h3>Story Boarding</h3>
-        <!-- <video controls="" width="250">
+        </div>
+
+        <div class="tutorial-block">
+            <h3>Story Boarding</h3>
+            <!-- <video controls="" width="250">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4">
         </video> -->
-        <p>Use this tool to create a story board with your generated images</p>
-        <a href="https://app.diagrams.net" target="_blank">draw.io</a>
-    </div>
+            <p>Use this tool to create a story board with your generated images</p>
+            <a href="https://app.diagrams.net" target="_blank">draw.io</a>
+        </div>
 
-    <div class="tutorial-block">
-        <h3>Video Generation</h3>
-        <!-- <video controls="" width="250">
+        <div class="tutorial-block">
+            <h3>Video Generation</h3>
+            <!-- <video controls="" width="250">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4">
         </video> -->
-        <p>Use this tool to generate a video that goes into your overall production</p>
-        
-        <!-- <iframe
+            <p>Use this tool to generate a video that goes into your overall production</p>
+
+            <iframe
             src="https://multimodalart-stable-video-diffusion.hf.space"
             frameborder="0"
-            width="850"
-            height="450"
-        ></iframe> -->
-<!-- 
+            width="100%"
+            height="1200px"
+            ></iframe>
+            <!-- 
         <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"
         ></script> -->
 
-        <gradio-app id="video-gen" src="https://multimodalart-stable-video-diffusion.hf.space"></gradio-app>
+            <!-- <gradio-app id="video-gen" src="https://multimodalart-stable-video-diffusion.hf.space"></gradio-app> -->
 
-    </div>
-
-    <div class="tutorial-block">
-        <h3>Audio Generation</h3>
-        <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-        <p>Use this tool to generate audio</p>
-
-        <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
-            <iframe
-            src="https://haoheliu-audioldm-text-to-audio-generation.hf.space"
-            frameborder="0"
-            width="100%"
-            height="1200px"
-            ></iframe>
         </div>
 
+        <div class="tutorial-block">
+            <h3>Audio Generation</h3>
+            <!-- <video controls="" width="250">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
+        </video> -->
+            <p>Use this tool to generate audio</p>
 
-        <!-- <script
+            <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
+                <iframe src="https://haoheliu-audioldm-text-to-audio-generation.hf.space" frameborder="0" width="100%"
+                    height="1200px"></iframe>
+            </div>
+
+
+            <!-- <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"
         ></script>
 
         <gradio-app src="https://haoheliu-audioldm-text-to-audio-generation.hf.space"></gradio-app> -->
 
-        <!-- <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
+            <!-- <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
             <iframe
                 src="https://haoheliu-audioldm-48k-text-to-hifiaudio-generation.hf.space"
                 frameborder="0"
@@ -197,23 +209,25 @@
             ></iframe>
         </div> -->
 
-        <!-- <script
+            <!-- <script
             type="module"
             src="https://gradio.s3-us-west-2.amazonaws.com/3.41.2/gradio.js"
         ></script>
 
         <gradio-app id="audio-gen" src="https://haoheliu-audioldm-48k-text-to-hifiaudio-generation.hf.space"></gradio-app> -->
 
-    </div>
+        </div>
 
-    <div class="tutorial-block">
-        <h3>Audio Composition</h3>
-        <!-- <video controls="" width="250">
+        <div class="tutorial-block">
+            <h3>Audio Composition</h3>
+            <!-- <video controls="" width="250">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4">
         </video> -->
-        <p>Use this tool to edit and compose audio</p>
-        <a href="https://wavacity.com" target="_blank">Audacity Online</a>
-        
+            <p>Use this tool to edit and compose audio</p>
+            <a href="https://wavacity.com" target="_blank">Audacity Online</a>
+
+        </div>
+
     </div>
 
     <!--
@@ -225,7 +239,7 @@
         function removeElementByIdAndClass(id, className) {
             var selector = `#${id}.${className}`;
             var element = document.querySelector(selector);
-            
+
             if (element) {
                 element.remove();
                 // Optionally, disconnect the observer after removing the element
@@ -252,5 +266,14 @@
         }, 600000);
 
     </script>
+
+
+    <script>
+        function switchStep(step){
+            const container = document.getElementById('tutorial-container');
+            container.style.left = `${step * -1050}px`;
+        }
+    </script>
 </body>
+
 </html>
