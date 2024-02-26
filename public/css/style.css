@@ -236,6 +236,7 @@ nav ul li{
 }
 
 .tutorial-block{
+    border: 2px solid white;
     padding: 50px;
     width: 1000px;
 }
