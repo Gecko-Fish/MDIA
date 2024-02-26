@@ -6,278 +6,135 @@
     <!-- Image is squashed -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/css/animate.css">
     <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"></script>
 </head>
-
 <body>
-    <h1>
-        Video AI Webportal
-    </h1>
-    <p>
-        Make sure to reload the page as needed until all of the modules are loaded before starting.
-        <br><br>
-        Note that reloading will clear any ongoing processes and unsaved content.
-    </p>
-    <br><br>
-
-    <H1>Intro Video for Content Creators</H1>
-    <div width="10000px" class="flex-row">
-        <video width="1000px" controls>
-            <source src="public/media/video/Intro_Outro Video Demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    
-        <iframe width="1000px" height="500px" src="https://docs.google.com/document/d/e/2PACX-1vR3wF33ZuofPadfff6gP5Fnd9IPzPvmbPn0g5eQbvRciji7UZ2BrFFToDS9OHbMYvhLlnTdP9diUgvM/pub?embedded=true"></iframe>    
+    <!-- Title will be replaced by js if it is enabled -->
+    <H2 id="title">Please enable JavaScript in your browser to use this website.</H2>
+    <div id="difficulty-container" class="flex-row">
+        <!-- Difficulty generated here -->
     </div>
-
-    <br>
-    <br>
-    <br>
-
-    <div id="tutorial-selection" class="flex-row">
-        <button class="button" onclick="switchStep(1)">Step 1</button>
-        <button class="button" onclick="switchStep(2)">Step 2</button>
-        <button class="button" onclick="switchStep(3)">Step 3</button>
-        <button class="button" onclick="switchStep(4)">Step 4</button>
-        <button class="button" onclick="switchStep(5)">Step 5</button>
-        <button class="button" onclick="switchStep(6)">Step 6</button>
-        <button class="button" onclick="switchStep(7)">Step 7</button>
+    <div id="tutorial-selection">
+        <div class="flex-row">
+            <!-- Buttons generated here -->
+        </div>
     </div>
-
-    <div id="tutorial-container" class="flex-row">
-        <div class="tutorial-block">
-            <h3>Story Generation</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this chat interface to help you plan your scenes and story</p>
-
-            <!-- <iframe
-            src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"
-            frameborder="0"
-            width="850"
-            height="450"
-        ></iframe> -->
-
-            <!-- <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/4.15.0/gradio.js"
-        ></script> -->
-
-            <gradio-app id="story-gen" src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"></gradio-app>
-
-
-        </div>
-        <div class="tutorial-block">
-            <h3>Prompt Engineering</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this chat interface to help you prompt the image generation AI</p>
-
-            <!-- <iframe
-            src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"
-            frameborder="0"
-            width="850"
-            height="450"
-        ></iframe> -->
-
-            <!-- <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/4.15.0/gradio.js"
-        ></script> -->
-
-            <gradio-app id="prompt-eng" src="https://stabilityai-stablelm-2-1-6b-zephyr.hf.space"></gradio-app>
-
-        </div>
-
-        <div class="tutorial-block">
-            <h3>Image Generation</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this tool to generate images based on your prompt and/or images</p>
-
-            <!-- <iframe
-            src="https://prodia-fast-stable-diffusion.hf.space"
-            frameborder="0"
-            width="850"
-            height="450"
-        ></iframe> -->
-
-            <!-- <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"
-        ></script> -->
-
-            <gradio-app id="image-gen" src="https://prodia-fast-stable-diffusion.hf.space"></gradio-app>
-
-
-            <!-- <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/3.20.0/gradio.js"
-        ></script>
-
-        <gradio-app src="https://stabilityai-stable-diffusion.hf.space"></gradio-app> -->
-
-            <!-- <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container"></div>
-            <iframe
-                src="https://stabilityai-stable-diffusion.hf.space"
-                frameborder="0"
-                width="100%"
-                height="1000px"
-            ></iframe>
-        </div> -->
-        </div>
-
-        <div class="tutorial-block">
-            <h3>Image Inpainting</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this tool to edit images based on your prompt</p>
-
-            <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
-                <iframe src="https://diffusers-stable-diffusion-xl-inpainting.hf.space" frameborder="0" width="100%"
-                    height="1000px"></iframe>
-            </div>
-
-            <!-- <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/3.41.2/gradio.js"
-        ></script>
-    
-        <gradio-app id="inpaint" src="https://diffusers-stable-diffusion-xl-inpainting.hf.space"></gradio-app> -->
-
-        </div>
-
-        <div class="tutorial-block">
-            <h3>Story Boarding</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this tool to create a story board with your generated images</p>
-            <a href="https://app.diagrams.net" target="_blank">draw.io</a>
-        </div>
-
-        <div class="tutorial-block">
-            <h3>Video Generation</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this tool to generate a video that goes into your overall production</p>
-
-            <iframe
-            src="https://multimodalart-stable-video-diffusion.hf.space"
-            frameborder="0"
-            width="100%"
-            height="1200px"
-            ></iframe>
-            <!-- 
-        <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"
-        ></script> -->
-
-            <!-- <gradio-app id="video-gen" src="https://multimodalart-stable-video-diffusion.hf.space"></gradio-app> -->
-
-        </div>
-
-        <div class="tutorial-block">
-            <h3>Audio Generation</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this tool to generate audio</p>
-
-            <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
-                <iframe src="https://haoheliu-audioldm-text-to-audio-generation.hf.space" frameborder="0" width="100%"
-                    height="1200px"></iframe>
-            </div>
-
-
-            <!-- <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"
-        ></script>
-
-        <gradio-app src="https://haoheliu-audioldm-text-to-audio-generation.hf.space"></gradio-app> -->
-
-            <!-- <div class="gradio-container gradio-container-4-4-0 svelte-1kyws56 embed-container">
-            <iframe
-                src="https://haoheliu-audioldm-48k-text-to-hifiaudio-generation.hf.space"
-                frameborder="0"
-                width="100%"
-                height="1200px"
-            ></iframe>
-        </div> -->
-
-            <!-- <script
-            type="module"
-            src="https://gradio.s3-us-west-2.amazonaws.com/3.41.2/gradio.js"
-        ></script>
-
-        <gradio-app id="audio-gen" src="https://haoheliu-audioldm-48k-text-to-hifiaudio-generation.hf.space"></gradio-app> -->
-
-        </div>
-
-        <div class="tutorial-block">
-            <h3>Audio Composition</h3>
-            <!-- <video controls="" width="250">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-        </video> -->
-            <p>Use this tool to edit and compose audio</p>
-            <a href="https://wavacity.com" target="_blank">Audacity Online</a>
-
-        </div>
-
+    <div class="tutorial-container flex-row">
+        <!-- Tutorials generated here -->
     </div>
-
-    <!--
-    Fix broken example images.
-    Only works with embedded content and not iframes.
-    -->
     <script>
-        // Function to remove the element based on ID and class
-        function removeElementByIdAndClass(id, className) {
-            var selector = `#${id}.${className}`;
-            var element = document.querySelector(selector);
+        let step_tracker = 0;
+        let tutorialNum = 0;
+        let difficulty_tracker = 0;
+        let tutorialTitle = 'tut-name';
+        // Title and difficulty should probably come preloaded when this is selected from a start page
+        setTitle('Intro/Outro Content Creation Using Generative AI');
 
-            if (element) {
-                element.remove();
-                // Optionally, disconnect the observer after removing the element
-                observer.disconnect();
+        // Create difficulty title
+        const difficultyContainer = document.getElementById('difficulty-container');
+        const difficultyElm = document.createElement('h4');
+        difficultyElm.innerText = 'Difficulty:';
+        difficultyContainer.appendChild(difficultyElm);
+
+        fetch(`public/Tutorials/${tutorialTitle}/buttons.json`).then(resp=>{
+            return resp.json();
+        }).then(data=>{
+            const buttons = data.buttons;
+            setDifficulty(data.difficulty);
+            addContent(buttons);
+        })
+
+        function setTitle(title){
+            // tutorialTitle = title;
+            const titleElm = document.getElementById('title');
+            titleElm.textContent = title;
+        }
+
+        function setDifficulty(difficulty){
+            difficulty_tracker = difficulty
+            for(let i = 0; i < difficulty; i++){
+                const circle = document.createElement('div');
+                const container = document.querySelector('#difficulty-container');
+                circle.className = 'circle on';
+                container.appendChild(circle);
+            }
+
+            for(let i = 0; i < 5-difficulty; i++){
+                const circle = document.createElement('div');
+                const container = document.querySelector('#difficulty-container');
+                circle.className = 'circle off';
+                container.appendChild(circle);
             }
         }
 
-        // Create a MutationObserver to watch for changes in the DOM
-        var observer = new MutationObserver(function (mutationsList, observer) {
-            for (var mutation of mutationsList) {
-                if (mutation.type === 'childList') {
-                    // Check if the element with ID "component-13" and class "block.svelte-90oupt.hide-container" is added
-                    removeElementByIdAndClass("component-13", "block.svelte-90oupt.hide-container");
-                }
-            }
-        });
-
-        // Start observing the target node for configured mutations
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        // Stop checking after some time
-        setTimeout(() => {
-            observer.disconnect()
-        }, 600000);
-
-    </script>
-
-
-    <script>
+        // Method for step switch buttons
         function switchStep(step){
-            const container = document.getElementById('tutorial-container');
-            container.style.left = `${step * -1050}px`;
+            if(step >= tutorialNum){
+                step = 0;
+            }
+            if(step < 0){
+                step = tutorialNum-1;
+            }
+            step_tracker = step;
+
+            const container = document.querySelector('.tutorial-container');
+            container.style.left = `calc((100vw * ${-step} + var(--body-margin)))`;
+            const button = document.getElementById(`selection-button-${step}`);
+            button.focus();
+        }
+
+
+        // Add content
+        function addContent(buttonsData){
+
+            tutorialNum = buttonsData.length;
+
+            const selectButtonsContainer = document.querySelector("#tutorial-selection .flex-row");
+            const tutorialContainer = document.querySelector(".tutorial-container");
+            (async ()=>{
+                for(let i = 0; i < tutorialNum; i++){
+                const button = document.createElement('button');
+                button.id = `selection-button-${i}`;
+                button.setAttribute('onclick', `switchStep(${i})`);
+                const buttonData = buttonsData[i];
+                const buttonTitle = buttonData.title || `Step ${i}`;
+                const description = buttonData.description || '';
+                button.className = "no-squish";
+                button.innerHTML = `
+                <p class="step-title">${buttonTitle}</p>
+                <p class="step-description">${description}<p>
+                `;
+                selectButtonsContainer.appendChild(button);
+                if(i!==tutorialNum-1){
+                    const bar = document.createElement('div');
+                    bar.className = "tutorial-selection-bar";
+                    selectButtonsContainer.appendChild(bar);
+                }
+
+                if(i===0){
+                    button.focus();
+                }
+
+                const tutorial = document.createElement('div');
+                tutorial.className = 'tutorial';
+
+                const resp = await fetch(`public/Tutorials/${tutorialTitle}/section${i+1}.html`);
+                let page = await resp.text();
+                if(!page || page === 'File not found'){
+                    page = `<div>No content or an issue occurred during loading</div>`;
+                }
+                tutorial.innerHTML = page;
+                tutorialContainer.appendChild(tutorial);
+            }
+            })();
         }
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <footer id="tutorial-footer">
+        <div class="flex-row">
+            <button onclick="switchStep(step_tracker-1)"><i class="fas fa-angle-left"></i>   Previous</button>
+            <button onclick="switchStep(step_tracker+1)">Next   <i class="fas fa-angle-right"></i></button>
+        </div>
+    </footer>
 </body>
-
 </html>
