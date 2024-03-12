@@ -1,0 +1,18 @@
+[
+    {
+        "folderName": "tut-name",
+        "toolList": [
+            {
+                "name": "Runway",
+                "image": "public/media/tools/runway-logo.png",
+                "link": "https://runwayml.com"
+            }
+        ]
+    },
+    {
+        "folderName": "tut-1"
+    },
+    {
+        "folderName": "tut-2"
+    }
+]

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <title>Video AI Webportal</title> -->
+    <!-- Image is squashed -->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/tutorial.css">
+</head>
+<body>
+    <!-- Title will be replaced by js if it is enabled -->
+    <H2 id="title">Please enable JavaScript in your browser to use this website.</H2>
+    <div id="difficulty-container" class="flex-row">
+        <!-- Difficulty generated here -->
+    </div>
+    <div id="section-selection">
+        <div class="flex-row">
+            <!-- Buttons generated here -->
+        </div>
+    </div>
+    <div class="section-container flex-row">
+        <!-- Tutorials generated here -->
+    </div>
+    <script>
+        let step_tracker = 0;
+        let sectionNum = 0;
+        let difficulty_tracker = 0;
+
+        // Create difficulty title
+        const difficultyContainer = document.getElementById('difficulty-container');
+        const difficultyElm = document.createElement('h4');
+        difficultyElm.innerText = 'Difficulty:';
+        difficultyContainer.appendChild(difficultyElm);
+
+        fetch('info.json').then(resp=>{
+            return resp.json();
+        }).then(data=>{
+            setDifficulty(data.difficulty);
+            setTitle(data.title);
+            const buttons = data.buttons;
+            addContent(buttons);
+        })
+
+        function setTitle(title){
+            // sectionTitle = title;
+            const titleElm = document.getElementById('title');
+            titleElm.textContent = title;
+        }
+
+        function setDifficulty(difficulty){
+            difficulty_tracker = difficulty
+            for(let i = 0; i < difficulty; i++){
+                const circle = document.createElement('div');
+                const container = document.querySelector('#difficulty-container');
+                circle.className = 'circle on';
+                container.appendChild(circle);
+            }
+
+            for(let i = 0; i < 5-difficulty; i++){
+                const circle = document.createElement('div');
+                const container = document.querySelector('#difficulty-container');
+                circle.className = 'circle off';
+                container.appendChild(circle);
+            }
+        }
+
+        // Method for step switch buttons
+        function switchStep(step){
+            if(step >= sectionNum){
+                step = 0;
+            }
+            if(step < 0){
+                step = sectionNum-1;
+            }
+            step_tracker = step;
+
+            const container = document.querySelector('.section-container');
+            container.style.left = `calc((100vw * ${-step} + var(--body-margin)))`;
+            const button = document.getElementById(`selection-button-${step}`);
+            button.focus();
+        }
+
+
+        // Add content
+        function addContent(buttonsData){
+
+            sectionNum = buttonsData.length;
+
+            const selectButtonsContainer = document.querySelector("#section-selection .flex-row");
+            const sectionContainer = document.querySelector(".section-container");
+            (async ()=>{
+                for(let i = 0; i < sectionNum; i++){
+                const button = document.createElement('button');
+                button.id = `selection-button-${i}`;
+                button.setAttribute('onclick', `switchStep(${i})`);
+                const buttonData = buttonsData[i];
+                const buttonTitle = buttonData.title || `Step ${i}`;
+                const description = buttonData.description || '';
+                button.className = "no-squish";
+                button.innerHTML = `
+                <p class="step-title">${buttonTitle}</p>
+                <p class="step-description">${description}<p>
+                `;
+                selectButtonsContainer.appendChild(button);
+                if(i!==sectionNum-1){
+                    const bar = document.createElement('div');
+                    bar.className = "section-selection-bar";
+                    selectButtonsContainer.appendChild(bar);
+                }
+
+                if(i===0){
+                    button.focus();
+                }
+
+                const section = document.createElement('div');
+                section.className = 'section';
+
+                const resp = await fetch(`sections/section${i+1}.html`);
+                let page = await resp.text();
+                if(!page || page === 'File not found'){
+                    page = `<div>No content or an issue occurred during loading</div>`;
+                }
+                section.innerHTML = page;
+                sectionContainer.appendChild(section);
+            }
+            })();
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <footer id="tutorial-footer">
+        <div class="flex-row">
+            <button onclick="switchStep(step_tracker-1)"><i class="fas fa-angle-left"></i>   Previous</button>
+            <button onclick="switchStep(step_tracker+1)">Next   <i class="fas fa-angle-right"></i></button>
+        </div>
+    </footer>
+</body>
+</html>

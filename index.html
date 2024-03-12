@@ -6,135 +6,84 @@
     <!-- Image is squashed -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="public/css/style.css">
-    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.4.0/gradio.js"></script>
 </head>
 <body>
-    <!-- Title will be replaced by js if it is enabled -->
-    <H2 id="title">Please enable JavaScript in your browser to use this website.</H2>
-    <div id="difficulty-container" class="flex-row">
-        <!-- Difficulty generated here -->
-    </div>
-    <div id="tutorial-selection">
-        <div class="flex-row">
-            <!-- Buttons generated here -->
-        </div>
-    </div>
-    <div class="tutorial-container flex-row">
-        <!-- Tutorials generated here -->
+    <h1 style="text-align: center;">Workflow Tutorial Selection</h1>
+    <div id="tutorial-selection-container" class="flex-column">
+        <!-- Tutorial selection generated here -->
     </div>
     <script>
-        let step_tracker = 0;
-        let tutorialNum = 0;
-        let difficulty_tracker = 0;
-        let tutorialTitle = 'tut-name';
-        // Title and difficulty should probably come preloaded when this is selected from a start page
-        setTitle('Intro/Outro Content Creation Using Generative AI');
+        const container = document.getElementById('tutorial-selection-container');
 
-        // Create difficulty title
-        const difficultyContainer = document.getElementById('difficulty-container');
-        const difficultyElm = document.createElement('h4');
-        difficultyElm.innerText = 'Difficulty:';
-        difficultyContainer.appendChild(difficultyElm);
-
-        fetch(`public/Tutorials/${tutorialTitle}/buttons.json`).then(resp=>{
+        fetch('tutorials.json').then(resp=>{
             return resp.json();
-        }).then(data=>{
-            const buttons = data.buttons;
-            setDifficulty(data.difficulty);
-            addContent(buttons);
-        })
+        }).then(datas=>{
+            for(const data of datas){
+                const tutorialPath = `Tutorials/${data.folderName}`;
+                const buttonDiv = document.createElement('div');
+                buttonDiv.setAttribute('onclick', `window.open('${tutorialPath}/index.html', '_blank')`);
+                
+                fetch(`${tutorialPath}/info.json`).then(resp=>{
+                    return resp.json();
+                }).then(data=>{
+                    const title = data.title;
+                    const p = document.createElement('p');
+                    p.innerText = title;
+                    buttonDiv.appendChild(p);
+                });
 
-        function setTitle(title){
-            // tutorialTitle = title;
-            const titleElm = document.getElementById('title');
-            titleElm.textContent = title;
-        }
+                container.appendChild(buttonDiv);
+               
+                function getTools(){
+                if (data.toolList && data.toolList.length > 0) {
+                    const div = document.createElement('div');
+                    div.className = 'tool-list';
 
-        function setDifficulty(difficulty){
-            difficulty_tracker = difficulty
-            for(let i = 0; i < difficulty; i++){
-                const circle = document.createElement('div');
-                const container = document.querySelector('#difficulty-container');
-                circle.className = 'circle on';
-                container.appendChild(circle);
-            }
+                    for (const tool of data.toolList) {
+                        console.log(tool);
+                        /* Recreate the tool list with js
 
-            for(let i = 0; i < 5-difficulty; i++){
-                const circle = document.createElement('div');
-                const container = document.querySelector('#difficulty-container');
-                circle.className = 'circle off';
-                container.appendChild(circle);
-            }
-        }
+                        <div class="tool-list">
+                            <a href="https://runwayml.com" target="_blank">
+                            <div class="tool-icon">
+                                <img src="media/runway-logo.png" alt="Runway Icon">
+                                <p>Runway</p>
+                            </div>
+                        </a>
+                        </div>
+                        */
+                        
+                        const toolDiv = document.createElement('div');
+                        toolDiv.className = 'tool-list';
+                        
+                        const toolLink = document.createElement('a');
+                        toolLink.href = tool.link;
+                        toolLink.target = '_blank';
+                        
+                        const toolIconDiv = document.createElement('div');
+                        toolIconDiv.className = 'tool-icon';
+                        
+                        const toolImage = document.createElement('img');
+                        toolImage.src = tool.image;
+                        toolImage.alt = tool.name + ' Icon';
+                        
+                        const toolName = document.createElement('p');
+                        toolName.textContent = tool.name;
+                        
+                        toolIconDiv.appendChild(toolImage);
+                        toolIconDiv.appendChild(toolName);
+                        
+                        toolLink.appendChild(toolIconDiv);
+                        toolDiv.appendChild(toolLink);
+                        
+                        div.appendChild(toolDiv);
+                    }
 
-        // Method for step switch buttons
-        function switchStep(step){
-            if(step >= tutorialNum){
-                step = 0;
-            }
-            if(step < 0){
-                step = tutorialNum-1;
-            }
-            step_tracker = step;
-
-            const container = document.querySelector('.tutorial-container');
-            container.style.left = `calc((100vw * ${-step} + var(--body-margin)))`;
-            const button = document.getElementById(`selection-button-${step}`);
-            button.focus();
-        }
-
-
-        // Add content
-        function addContent(buttonsData){
-
-            tutorialNum = buttonsData.length;
-
-            const selectButtonsContainer = document.querySelector("#tutorial-selection .flex-row");
-            const tutorialContainer = document.querySelector(".tutorial-container");
-            (async ()=>{
-                for(let i = 0; i < tutorialNum; i++){
-                const button = document.createElement('button');
-                button.id = `selection-button-${i}`;
-                button.setAttribute('onclick', `switchStep(${i})`);
-                const buttonData = buttonsData[i];
-                const buttonTitle = buttonData.title || `Step ${i}`;
-                const description = buttonData.description || '';
-                button.className = "no-squish";
-                button.innerHTML = `
-                <p class="step-title">${buttonTitle}</p>
-                <p class="step-description">${description}<p>
-                `;
-                selectButtonsContainer.appendChild(button);
-                if(i!==tutorialNum-1){
-                    const bar = document.createElement('div');
-                    bar.className = "tutorial-selection-bar";
-                    selectButtonsContainer.appendChild(bar);
+                    buttonDiv.append(div);
                 }
-
-                if(i===0){
-                    button.focus();
-                }
-
-                const tutorial = document.createElement('div');
-                tutorial.className = 'tutorial';
-
-                const resp = await fetch(`public/Tutorials/${tutorialTitle}/section${i+1}.html`);
-                let page = await resp.text();
-                if(!page || page === 'File not found'){
-                    page = `<div>No content or an issue occurred during loading</div>`;
-                }
-                tutorial.innerHTML = page;
-                tutorialContainer.appendChild(tutorial);
             }
-            })();
         }
+        });
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <footer id="tutorial-footer">
-        <div class="flex-row">
-            <button onclick="switchStep(step_tracker-1)"><i class="fas fa-angle-left"></i>   Previous</button>
-            <button onclick="switchStep(step_tracker+1)">Next   <i class="fas fa-angle-right"></i></button>
-        </div>
-    </footer>
 </body>
 </html>
