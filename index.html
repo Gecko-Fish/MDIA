@@ -9,10 +9,24 @@
 </head>
 <body>
     <h1 style="text-align: center;">Workflow Tutorial Selection</h1>
+    <H2 id="nojsIndicator">Please enable JavaScript in your browser to use this website. <a href="../../error.html">Click for Help Page</a></H2>
     <div id="tutorial-selection-container" class="flex-column">
         <!-- Tutorial selection generated here -->
     </div>
     <script>
+        const titleElm = document.getElementById('nojsIndicator');
+        titleElm.remove();
+
+        function openTutorial(tutorialPath){
+            if (window.open(`${tutorialPath}/index.html`, '_blank')) {
+                console.log('page found');
+            }
+            else {
+                console.log('page not found');
+                window.open('error.html', '_blank')
+            }
+        }
+
         const container = document.getElementById('tutorial-selection-container');
 
         fetch('tutorials.json').then(resp=>{
@@ -21,8 +35,9 @@
             for(const data of datas){
                 const tutorialPath = `Tutorials/${data.folderName}`;
                 const buttonDiv = document.createElement('div');
-                buttonDiv.setAttribute('onclick', `window.open('${tutorialPath}/index.html', '_blank')`);
                 
+                buttonDiv.setAttribute('onclick', `openTutorial('${tutorialPath}')`);
+
                 fetch(`${tutorialPath}/info.json`).then(resp=>{
                     return resp.json();
                 }).then(data=>{
