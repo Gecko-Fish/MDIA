@@ -44,7 +44,7 @@ body {
 
 #tutorial-selection-container > div{
     background-color: var(--back);
-    border: 1px solid var(--purple);
+    border: 2px solid #00000000;
     border-radius: 10px;
     width: 50vw;
     text-align: center;
@@ -56,6 +56,7 @@ body {
 
 #tutorial-selection-container > div:hover{
     transform: scale(1.1);
+    border: 2px solid var(--purple);
 }
 
 .tool-icon {
