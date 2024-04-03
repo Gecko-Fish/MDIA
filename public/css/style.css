@@ -8,7 +8,7 @@
     --purple: #B1A4FF;
     --grey3: #454545;
 
-    --body-margin: 50px;
+    --body-margin: 100px;
     --tutorial-height: 600px;
     --footer-height: 50px;
 }
@@ -34,19 +34,17 @@ body {
     flex-shrink: 0;
 }
 
-
 #tutorial-selection-container{
-    border-radius: 10px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     width: max-content;
-    margin: auto;
+    margin-top: 5vw;
 }
 
 #tutorial-selection-container > div{
     background-color: var(--back);
-    border: 2px solid #00000000;
-    border-radius: 10px;
-    width: 50vw;
+    width: calc(50vw -  var(--body-margin));
     text-align: center;
 
     margin-bottom: 20px;
@@ -83,10 +81,37 @@ body {
 }
 
 .tool-list > * {
-    padding-right: 20px;
+    margin-right: 20px;
 }
 
 .tool-list a {
     text-decoration: none;
     color: inherit;
+
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tool-list a:hover {
+    border: 2px solid var(--purple);
+    border-radius: 10px;
+    transform: scale(1.1);
+}
+
+
+.tutorial-select{
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.tutorial-select img{
+    width: 100%;
+    overflow: hidden;
+}
+
+.tutorial-select > .tutorial-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
 }

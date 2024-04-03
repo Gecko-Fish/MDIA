@@ -1,18 +1,7 @@
 [
-    {
-        "folderName": "tut-name",
-        "toolList": [
-            {
-                "name": "Runway",
-                "image": "public/media/tools/runway-logo.png",
-                "link": "https://runwayml.com"
-            }
-        ]
-    },
-    {
-        "folderName": "tut-1"
-    },
-    {
-        "folderName": "tut-2"
-    }
+    "IntroOutro-Content-Creation-Prompting",
+    "IntroOutro-Content-Creation-Image-To-Video",
+    "IntroOutro-Content-Creation-Text-To-Video",
+    "IntroOutro-Content-Creation-CapCut",
+    "IntroOutro-Content-Creation-Video-Editing"
 ]

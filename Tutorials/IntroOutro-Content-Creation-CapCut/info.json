@@ -1,0 +1,34 @@
+{
+    "title": "Intro/Outro Content Creation: CapCut",
+    "image": "media/lead.png",
+    "difficulty": 2,
+    "buttons": [
+        {
+            "title": "Overview",
+            "description": "What you will be creating"
+        },
+        { 
+            "description": "Accessing Runway"
+        },
+        {
+            "description": "Prompting the Runway tool"
+        }
+    ], 
+    "toolList": [
+        {
+            "name": "Runway",
+            "image": "../../public/media/tools/runway-logo.png",
+            "link": "https://runwayml.com"
+        },
+        {
+            "name": "Capcut",
+            "image": "../../public/media/tools/capcut-logo.png",
+            "link": "https://www.capcut.com/editor/02D32C0C-7471-4758-A4E2-DFFF168AC663?__action_from=picture_Free+all-in-one+video+editor+for+everyone+to+create+anything+anywhere&__from_page=landing_page&scenario=custom&workspaceId=7343365787836710914&spaceId=7343363945480520706"
+        },
+        {
+            "name": "ChatGPT",
+            "image": "../../public/media/tools/chatgtp-logo.png",
+            "link": "Tutorials/chatgtp-prompt-tutroial/index.html"
+        }
+    ]
+}

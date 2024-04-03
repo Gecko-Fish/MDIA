@@ -6,18 +6,30 @@
     <!-- Image is squashed -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/tutorial.css">
+    <script src="src/utils.js"></script>
 </head>
+
 <body>
-    <h1 style="text-align: center;">Workflow Tutorial Selection</h1>
-    <H2 id="nojsIndicator">Please enable JavaScript in your browser to use this website. <a href="../../error.html">Click for Help Page</a></H2>
-    <div id="tutorial-selection-container" class="flex-column">
+    <div>
+        
+    </div>
+    <H2 id="nojsIndicator">Please enable JavaScript in your browser to use this website. <a
+            href="../../error.html">Click for Help Page</a></H2>
+
+    <div>
+        <h1>GenAI Workflows</h1>
+        <p>Guides to utilizing AI toolds for content creation. Please select on workflow that fit you need to start</p>
+    </div>
+    
+    <div id="tutorial-selection-container">
         <!-- Tutorial selection generated here -->
     </div>
     <script>
         const titleElm = document.getElementById('nojsIndicator');
         titleElm.remove();
 
-        function openTutorial(tutorialPath){
+        function openTutorial(tutorialPath) {
             if (window.open(`${tutorialPath}/index.html`, '_blank')) {
                 console.log('page found');
             }
@@ -29,76 +41,56 @@
 
         const container = document.getElementById('tutorial-selection-container');
 
-        fetch('tutorials.json').then(resp=>{
+        fetch('tutorials.json').then(resp => {
             return resp.json();
-        }).then(datas=>{
-            for(const data of datas){
-                const tutorialPath = `Tutorials/${data.folderName}`;
+        }).then(async datas => {
+            for (const data of datas) {
+                const tutorialPath = `Tutorials/${data}`;
                 const buttonDiv = document.createElement('div');
-                
+                buttonDiv.className = 'tutorial-select';
+
                 buttonDiv.setAttribute('onclick', `openTutorial('${tutorialPath}')`);
 
-                fetch(`${tutorialPath}/info.json`).then(resp=>{
+                fetch(`${tutorialPath}/info.json`).then(resp => {
                     return resp.json();
-                }).then(data=>{
-                    const title = data.title;
+                }).then(async data => {
+
+                    const img = document.createElement('img');
+                    img.src = tutorialPath+'/'+data.image;
+
                     const p = document.createElement('p');
-                    p.innerText = title;
-                    buttonDiv.appendChild(p);
+                    p.innerText = data.title;
+                    
+                    const toolDiv = document.createElement('div');
+                    toolDiv.className = 'tool-list';
+                    const tools = await listTools(tutorialPath + '/info.json');
+                    toolDiv.append(...tools);
+
+                    const difficultyContainer = document.createElement('div');
+                    const diffTitle = document.createElement('p');
+                    diffTitle.innerText = 'Difficulty';
+                    difficultyContainer.append(diffTitle);
+                    difficultyContainer.className = 'difficulty-container flex-row';
+                    setDifficulty(data.difficulty, difficultyContainer);
+
+
+                    const detailsContainer = document.createElement('div');
+                    detailsContainer.className = 'tutorial-details';
+                    
+                    detailsContainer.appendChild(p);
+                    detailsContainer.appendChild(difficultyContainer);
+                    detailsContainer.append(toolDiv);
+
+                    buttonDiv.appendChild(img);
+                    buttonDiv.appendChild(detailsContainer);
+                    
+                    
                 });
 
                 container.appendChild(buttonDiv);
-               
-                function getTools(){
-                if (data.toolList && data.toolList.length > 0) {
-                    const div = document.createElement('div');
-                    div.className = 'tool-list';
-
-                    for (const tool of data.toolList) {
-                        console.log(tool);
-                        /* Recreate the tool list with js
-
-                        <div class="tool-list">
-                            <a href="https://runwayml.com" target="_blank">
-                            <div class="tool-icon">
-                                <img src="media/runway-logo.png" alt="Runway Icon">
-                                <p>Runway</p>
-                            </div>
-                        </a>
-                        </div>
-                        */
-                        
-                        const toolDiv = document.createElement('div');
-                        toolDiv.className = 'tool-list';
-                        
-                        const toolLink = document.createElement('a');
-                        toolLink.href = tool.link;
-                        toolLink.target = '_blank';
-                        
-                        const toolIconDiv = document.createElement('div');
-                        toolIconDiv.className = 'tool-icon';
-                        
-                        const toolImage = document.createElement('img');
-                        toolImage.src = tool.image;
-                        toolImage.alt = tool.name + ' Icon';
-                        
-                        const toolName = document.createElement('p');
-                        toolName.textContent = tool.name;
-                        
-                        toolIconDiv.appendChild(toolImage);
-                        toolIconDiv.appendChild(toolName);
-                        
-                        toolLink.appendChild(toolIconDiv);
-                        toolDiv.appendChild(toolLink);
-                        
-                        div.appendChild(toolDiv);
-                    }
-
-                    buttonDiv.append(div);
-                }
             }
-        }
         });
     </script>
 </body>
+
 </html>

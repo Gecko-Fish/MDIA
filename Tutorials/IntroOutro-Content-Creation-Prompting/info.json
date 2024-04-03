@@ -1,0 +1,29 @@
+{
+    "title": "Intro/Outro Content Creation: Prompting",
+    "image": "media/lead.png",
+    "difficulty": 2,
+    "buttons": [
+        {
+            "title": "Overview",
+            "description": "What you will be creating"
+        },
+        { 
+            "description": "Accessing Runway"
+        },
+        {
+            "description": "Prompting the Runway tool"
+        }
+    ], 
+    "toolList": [
+        {
+            "name": "Runway",
+            "image": "../../public/media/tools/runway-logo.png",
+            "link": "https://runwayml.com"
+        },
+        {
+            "name": "ChatGPT",
+            "image": "../../public/media/tools/chatgtp-logo.png",
+            "link": "Tutorials/chatgtp-prompt-tutroial/index.html"
+        }
+    ]
+}
