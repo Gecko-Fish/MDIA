@@ -3,7 +3,7 @@ let sectionNum = 0;
 let difficulty_tracker = 0;
 
 function loadTutorial() {
-    
+
     // Create difficulty title
     const difficultyContainer = document.querySelector('.difficulty-container');
     const difficultyElm = document.createElement('h4');
@@ -113,7 +113,7 @@ function setDifficulty(difficulty, diffContainer) {
     }
 }
 
-async function listTools(path='info.json') {
+async function listTools(path = 'info.json', undepth = 0) {
 
     /*
 
@@ -143,7 +143,14 @@ async function listTools(path='info.json') {
             divElement.classList.add('tool-icon');
 
             const imgElement = document.createElement('img');
-            imgElement.src = iconPath;
+
+            let pathPrefixToRemove = '../'.repeat(undepth);
+            if (iconPath.startsWith(pathPrefixToRemove)) {
+                imgElement.src = iconPath.slice(pathPrefixToRemove.length);
+            } else {
+                imgElement.src = iconPath;
+            }
+
             imgElement.alt = altName;
 
             const pElement = document.createElement('p');

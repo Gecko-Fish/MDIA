@@ -12,16 +12,14 @@
 
 <body>
     <div>
-        
-    </div>
-    <H2 id="nojsIndicator">Please enable JavaScript in your browser to use this website. <a
-            href="../../error.html">Click for Help Page</a></H2>
-
-    <div>
         <h1>GenAI Workflows</h1>
         <p>Guides to utilizing AI toolds for content creation. Please select on workflow that fit you need to start</p>
     </div>
-    
+
+    <H2 id="nojsIndicator">Please enable JavaScript in your browser to use this website.
+        <a href="error.html" target="_blank">Click for Help Page</a>
+    </H2>
+
     <div id="tutorial-selection-container">
         <!-- Tutorial selection generated here -->
     </div>
@@ -63,7 +61,7 @@
                     
                     const toolDiv = document.createElement('div');
                     toolDiv.className = 'tool-list';
-                    const tools = await listTools(tutorialPath + '/info.json');
+                    const tools = await listTools(tutorialPath + '/info.json', 2);
                     toolDiv.append(...tools);
 
                     const difficultyContainer = document.createElement('div');
