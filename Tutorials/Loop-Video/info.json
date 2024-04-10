@@ -1,6 +1,7 @@
 {
     "title": "Loop Video",
     "image": "media/lead.png",
+    "video": ["https://drive.google.com/file/d/1f_mzHZbegHxzEAthV3CmkZuC-OunEbmE/view?usp=sharing"],
     "document": "public/media/Loop-Video/doc.html",
     "difficulty": 3,
     "buttons": [

@@ -134,3 +134,7 @@ body {
     border-radius: 10px;
     transform: scale(1.05);
 }
+
+a {
+    color: var(--purple);
+}

@@ -13,7 +13,7 @@
 <body>
     <div>
         <h1>GenAI Workflows</h1>
-        <p>Guides to utilizing AI toolds for content creation. Please select on workflow that fit you need to start</p>
+        <p>Guides to utilizing AI toolds for content creation. Please select a workflow that fits your needs. See our extended <a href="https://drive.google.com/drive/folders/10-Vh6yq1D3MV8jSeOASM49MhA7TZ6cvC?usp=sharing" target="_blank">Documentation Here.</a></p>
     </div>
 
     <H2 id="nojsIndicator">Please enable JavaScript in your browser to use this website.
@@ -60,7 +60,14 @@
                     if(data.buttons && data.buttons.length > 0){
                         buttonDiv.setAttribute('onclick', `openTutorial('${tutorialPath}')`);
                     } else if(data.document){
-                        buttonDiv.setAttribute('onclick', `window.open('${data.document}', '_blank')`);
+                        let commandStr = `window.open('${data.document}', '_blank')`;
+                        if(data.video){
+                            for(video of data.video){
+                                commandStr += `; window.open('${video}', '_blank')`;
+                            }
+                        }
+
+                        buttonDiv.setAttribute('onclick', commandStr);
                         isFilled = false;
                     }
 

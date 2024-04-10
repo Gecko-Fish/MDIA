@@ -1,6 +1,7 @@
 {
     "title": "Channel Trailer",
     "image": "media/lead.png",
+    "video": ["https://drive.google.com/file/d/1m8fZib447VO7l-J8wdoSInXGDo5gBvDh/view?usp=sharing","https://drive.google.com/file/d/1lxeCKLWEV2EtJqQsC9qk4e81OUVnPKAR/view?usp=sharing"],
     "document": "public/media/Channel-Trailer/doc.html",
     "difficulty": 4,
     "buttons": [

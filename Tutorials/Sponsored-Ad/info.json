@@ -1,6 +1,7 @@
 {
     "title": "Sponsored Ad",
     "image": "media/lead.png",
+    "video": ["https://drive.google.com/file/d/1T8tvf8mqCi5d96fpuDd-RRIaHIune_7M/view?usp=sharing","https://drive.google.com/file/d/1zD1IX1XET7UlB5QAqPhPMc8WDD_bqjHF/view?usp=sharing"],
     "document": "public/media/Sponsored-Ad/doc.html",
     "difficulty": 3,
     "buttons": [
