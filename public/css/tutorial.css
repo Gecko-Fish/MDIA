@@ -1,0 +1,198 @@
+
+.difficulty-container {
+    width: max-content;
+    align-items: center;
+}
+
+.difficulty-container :first-child{
+    margin-right: 1rem;
+}
+
+.difficulty-container .circle{
+    margin-left: 0.2rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--grey);
+    border-radius: 50%;
+}
+
+.difficulty-container .circle.off{
+    background-color: var(--fore);
+}
+
+#section-selection {
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width: 50vw;
+    overflow-x: scroll; */
+}
+
+.section-selection-bar {
+    width: 100%;
+    height: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: var(--fore);
+} 
+
+#section-selection button {
+    background-color: var(--back);
+    color: var(--white);
+    width: max-content;
+    border-radius: 20px;
+    border: 2px solid #00000000;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#section-selection button:focus {
+    border: 2px solid var(--purple);
+}
+/* 
+@media screen and (max-width: 1000px){
+    #section-selection {
+        width: max-content;
+    }
+
+    #section-selection > div{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #section-selection button{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .section-selection-bar {
+        height: 100%;
+        width: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    } 
+} */
+
+.step-title {
+    color: var(--grey);
+}
+
+.section-container{
+    width: max-content;
+    position: absolute;
+    /* Transition for swipe */
+    left: calc((100vw * 0 + var(--body-margin)));
+    transition: left 0.5s ease;
+}
+
+.section-container .section{
+    margin-top: var(--body-margin);
+    width: calc(100vw - 2*var(--body-margin));
+    margin-right: calc(2*var(--body-margin));
+    height: max-content;
+    min-height: var(--tutorial-height);
+    background-color: var(--back);
+    border-radius: 20px;
+    margin-bottom: calc(var(--body-margin) + var(--footer-height));
+}
+
+.section-container .section > div{
+    color: var(--white);
+    padding: 30px;
+}
+
+#tutorial-footer{
+    margin-top: var(--body-margin);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--footer-height);
+    background-color: var(--back);
+    /* Center the contents horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: fixed;
+    
+}
+
+#tutorial-footer button{
+    color: var(--white);
+    background-color: var(--grey2);
+    border-radius: 20px;
+    width: 100px;
+    height: 30px;
+    white-space: pre;
+    border: none;
+}
+
+#tutorial-footer button:last-child{
+    margin-right: 50px;
+    margin-left: auto;
+}
+
+#tutorial-footer button:first-child{
+    margin-left: 50px;
+    margin-right: auto;
+}
+
+.section-page > .flex-row > *{
+    /* Space between children */
+    margin-right: 30px;
+}
+
+.section-page > .flex-row :last-child{
+    /* Undo space on last child */
+    margin-right: 0px;
+}
+
+/* .content-display {
+    width: min-content;
+} */
+
+.content-display .flex-row > * {
+    margin-right: 30px;
+}
+
+.content-display .flex-row > :last-child{
+    margin-right: 0px;
+}
+
+.content-display img, .content-display video {
+    margin-bottom: 50px;
+    border-radius: 10px;
+    width: 40vw;
+    max-height: calc(var(--tutorial-height) - 120px);
+}
+
+.section-page p {
+    white-space: pre-wrap;
+}
+
+.section-description {
+    padding-top: 4rem;
+}
+
+.redirect-button {
+    border-radius: 100px;
+    background-color: var(--purple);
+    width: max-content;
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.prompt-suggest {
+    background-color: var(--grey3);
+    padding: 5px 40px 5px 40px;
+    border-radius: 20px;
+    width: fit-content;
+}

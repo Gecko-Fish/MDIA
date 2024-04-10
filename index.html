@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video AI Webportal</title>
+    <!-- Image is squashed -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/tutorial.css">
+    <script src="src/utils.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>GenAI Workflows</h1>
+        <p>Guides to utilizing AI toolds for content creation. Please select on workflow that fit you need to start</p>
+    </div>
+
+    <H2 id="nojsIndicator">Please enable JavaScript in your browser to use this website.
+        <a href="error.html" target="_blank">Click for Help Page</a>
+    </H2>
+
+    <div id="tutorial-selection-container">
+        <!-- Tutorial selection generated here -->
+    </div>
+    <script>
+        const titleElm = document.getElementById('nojsIndicator');
+        titleElm.remove();
+
+        function openTutorial(tutorialPath) {
+            if (window.open(`${tutorialPath}/index.html`, '_blank')) {
+                console.log('page found');
+            }
+            else {
+                console.log('page not found');
+                window.open('error.html', '_blank')
+            }
+        }
+
+        const container = document.getElementById('tutorial-selection-container');
+
+        fetch('tutorials.json').then(resp => {
+            return resp.json();
+        }).then(async datas => {
+            for (const dataTutorials of datas) {
+
+                const tutorialPath = `Tutorials/${dataTutorials}`;
+                fetch(`${tutorialPath}/info.json`).then(resp => {
+                    return resp.json();
+                }).then(async data => {
+
+                    
+                    const buttonDiv = document.createElement('div');
+                    buttonDiv.className = 'tutorial-select';
+
+                    let isFilled = true;
+                    if(data.buttons && data.buttons.length > 0){
+                        buttonDiv.setAttribute('onclick', `openTutorial('${tutorialPath}')`);
+                    } else if(data.document){
+                        buttonDiv.setAttribute('onclick', `window.open('${data.document}', '_blank')`);
+                        isFilled = false;
+                    }
+
+
+                    const img = document.createElement('img');
+                    img.src = tutorialPath+'/'+data.image;
+
+                    const p = document.createElement('h3');
+                    p.innerText = data.title;
+                    
+                    const toolDiv = document.createElement('div');
+                    toolDiv.className = 'tool-list';
+                    const tools = await listTools(tutorialPath + '/info.json', 2);
+                    toolDiv.append(...tools);
+
+                    const difficultyContainer = document.createElement('div');
+                    const diffTitle = document.createElement('p');
+                    diffTitle.innerText = 'Difficulty';
+                    difficultyContainer.append(diffTitle);
+                    difficultyContainer.className = 'difficulty-container flex-row';
+                    setDifficulty(data.difficulty, difficultyContainer);
+
+
+                    const detailsContainer = document.createElement('div');
+                    detailsContainer.className = 'tutorial-details';
+                    
+
+                    detailsContainer.appendChild(p);
+                    detailsContainer.appendChild(difficultyContainer);
+
+                    if(data.document && isFilled){
+                        const tutorialDoc = document.createElement('a');
+                        tutorialDoc.href = data.document;
+                        tutorialDoc.target = 'blank';
+                        tutorialDoc.innerText = 'Full Document';
+                        tutorialDoc.className = 'doc-button';
+                        detailsContainer.append(tutorialDoc);
+                    }
+
+                    detailsContainer.append(toolDiv);
+
+                    buttonDiv.appendChild(img);
+                    buttonDiv.appendChild(detailsContainer);
+
+                    container.appendChild(buttonDiv);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

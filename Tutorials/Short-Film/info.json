@@ -1,0 +1,34 @@
+{
+    "title": "Short Film",
+    "image": "media/lead.png",
+    "document": "public/media/Short-Film/doc.html",
+    "difficulty": 3,
+    "buttons": [],
+    "toolList": [
+        {
+            "name": "Runway",
+            "image": "../../public/media/tools/runway-logo.png",
+            "link": "https://runwayml.com"
+        },
+        {
+            "name": "CapCut",
+            "image": "../../public/media/tools/capcut-logo.png",
+            "link": "https://www.capcut.com"
+        },
+        {
+            "name": "ChatGPT",
+            "image": "../../public/media/tools/chatgtp-logo.png",
+            "link": "https://chat.openai.com/"
+        },
+        {
+            "name": "Dall-E",
+            "image": "../../public/media/tools/chatgtp-logo.png",
+            "link": "https://openai.com/dall-e-2"
+        },
+        {
+            "name": "Suno",
+            "image": "../../public/media/tools/suno-logo.png",
+            "link": "https://suno.com/"
+        }
+    ]
+}

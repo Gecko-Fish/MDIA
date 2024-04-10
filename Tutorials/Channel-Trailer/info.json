@@ -1,0 +1,31 @@
+{
+    "title": "Channel Trailer",
+    "image": "media/lead.png",
+    "document": "public/media/Channel-Trailer/doc.html",
+    "difficulty": 4,
+    "buttons": [
+        {
+            "title": "Overview",
+            "description": "Get started for HeyGen"
+        },
+        { 
+            "description": "Upload Video"
+        },
+        {
+            "description": "Avatar Database"
+        },
+        {
+            "description": "Create Video with Your Avatar"
+        },
+        {
+            "description": "Finish"
+        }
+    ], 
+    "toolList": [
+        {
+            "name": "HayGen",
+            "image": "../../public/media/tools/haygen-logo.png",
+            "link": "https://www.heygen.com"
+        }
+    ]
+}

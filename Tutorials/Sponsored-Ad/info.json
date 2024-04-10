@@ -1,0 +1,20 @@
+{
+    "title": "Sponsored Ad",
+    "image": "media/lead.png",
+    "document": "public/media/Sponsored-Ad/doc.html",
+    "difficulty": 3,
+    "buttons": [
+    ], 
+    "toolList": [
+        {
+            "name": "CapCut",
+            "image": "../../public/media/tools/capcut-logo.png",
+            "link": "https://www.capcut.com"
+        },
+        {
+            "name": "ChatGPT",
+            "image": "../../public/media/tools/chatgtp-logo.png",
+            "link": "https://chat.openai.com/"
+        }
+    ]
+}

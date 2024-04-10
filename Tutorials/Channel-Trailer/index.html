@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <title>Video AI Webportal</title> -->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/tutorial.css">
+    <script src="../../src/utils.js"></script>
+</head>
+<body>
+    <!-- Title will be replaced by js if it is enabled -->
+    <H2 id="title">Please enable JavaScript in your browser to use this website. <a href="../../error.html">Click for Help Page</a></H2>
+    <div class="difficulty-container flex-row">
+        <!-- Difficulty generated here -->
+    </div>
+    <div id="section-selection">
+        <div class="flex-row">
+            <!-- Buttons generated here -->
+        </div>
+    </div>
+    <div class="section-container flex-row">
+        <!-- Tutorials generated here -->
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <footer id="tutorial-footer">
+        <div class="flex-row">
+            <button onclick="switchStep(step_tracker-1)"><i class="fas fa-angle-left"></i>   Previous</button>
+            <button onclick="switchStep(step_tracker+1)">Next   <i class="fas fa-angle-right"></i></button>
+        </div>
+    </footer>
+
+    <script>
+        loadTutorial();
+    </script>
+</body>
+</html>

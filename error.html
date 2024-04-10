@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video AI Webportal Error</title>
+    <!-- Image is squashed -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+
+<body>
+    <div class="flex-column" style="align-items: center;">
+        <h1 style="text-align: center;">Help Page</h1>
+        <h3>You may want to try disabling pop blockers and refreshing the page.</h3>
+        
+        <br><br>
+
+        <div id="js-needed">
+            <h1>Looks like Javascript is not enabled</h1>
+            <h2>Google Chrome:</h2>
+            <ol>
+                <li>Click on the three dots in the top-right corner and select "Settings".</li>
+                <li>Scroll down and click on "Advanced".</li>
+                <li>Under the "Privacy and security" section, click on "Site Settings".</li>
+                <li>Scroll down and click on "JavaScript".</li>
+                <li>Toggle the switch to enable JavaScript.</li>
+            </ol>
+
+            <h2>Mozilla Firefox:</h2>
+            <ol>
+                <li>Click on the menu button (three horizontal lines) and select "Preferences".</li>
+                <li>Go to the "Privacy & Security" panel.</li>
+                <li>Scroll down to the "Permissions" section.</li>
+                <li>Check the box next to "Enable JavaScript".</li>
+            </ol>
+
+            <h2>Microsoft Edge:</h2>
+            <ol>
+                <li>Click on the menu button (three dots) and select "Settings".</li>
+                <li>Scroll down and click on "View advanced settings".</li>
+                <li>Under the "Privacy and services" section, toggle the switch to enable JavaScript.</li>
+            </ol>
+
+            <h2>Safari:</h2>
+            <ol>
+                <li>Open Safari and click on "Safari" in the menu bar.</li>
+                <li>Select "Preferences".</li>
+                <li>Go to the "Security" tab.</li>
+                <li>Check the box next to "Enable JavaScript".</li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        const div = document.getElementById('js-needed');
+        div.remove();
+    </script>
+</body>
+
+</html>

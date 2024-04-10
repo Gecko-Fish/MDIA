@@ -1,0 +1,26 @@
+{
+    "title": "Loop Video",
+    "image": "media/lead.png",
+    "document": "public/media/Loop-Video/doc.html",
+    "difficulty": 3,
+    "buttons": [
+    ], 
+    "toolList": [
+        {
+            "name": "CapCut",
+            "image": "../../public/media/tools/capcut-logo.png",
+            "link": "https://www.capcut.com"
+        },
+        {
+            "name": "Mubert",
+            "image": "../../public/media/tools/mubert-logo.jpg",
+            "link": "https://mubert.com/"
+        },
+        {
+            "name": "Midjourney",
+            "image": "../../public/media/tools/midjourney-logo.jpg",
+            "link": "https://www.midjourney.com/home"
+        }
+
+    ]
+}
