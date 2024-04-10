@@ -53,6 +53,9 @@
                     const buttonDiv = document.createElement('div');
                     buttonDiv.className = 'tutorial-select';
 
+                    // Disabling inner page loading  
+                    data.buttons = undefined;
+
                     let isFilled = true;
                     if(data.buttons && data.buttons.length > 0){
                         buttonDiv.setAttribute('onclick', `openTutorial('${tutorialPath}')`);
